@@ -1,0 +1,350 @@
+{
+	"info": {
+		"_postman_id": "01bb402e-f274-490d-8901-ccbb9894c3ca",
+		"name": "lottey",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "首页",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://hyvgk2153e.execute-api.us-east-1.amazonaws.com/dev/lotteries",
+					"protocol": "https",
+					"host": [
+						"hyvgk2153e",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"lotteries"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "首页",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://hyvgk2153e.execute-api.us-east-1.amazonaws.com/dev/lotteries",
+							"protocol": "https",
+							"host": [
+								"hyvgk2153e",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"lotteries"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "260"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 15 May 2020 03:39:22 GMT"
+						},
+						{
+							"key": "x-amzn-RequestId",
+							"value": "2c63096e-0eba-4ebb-a3c4-46bf48d82328"
+						},
+						{
+							"key": "x-amz-apigw-id",
+							"value": "MjdEhGJvIAMFuew="
+						},
+						{
+							"key": "X-Amzn-Trace-Id",
+							"value": "Root=1-5ebe0ee9-919c1d34c8180d20c805c5f8;Sampled=0"
+						},
+						{
+							"key": "X-Cache",
+							"value": "Miss from cloudfront"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 e74ae1ee8d87215b42aa8a1c59137a49.cloudfront.net (CloudFront)"
+						},
+						{
+							"key": "X-Amz-Cf-Pop",
+							"value": "HKG54-C1"
+						},
+						{
+							"key": "X-Amz-Cf-Id",
+							"value": "CT27eUwsNcXNhCAB47uoIMufl9EeGZEJueBJ6D8wbMdK_9dUKdI3Bw=="
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 0,\n    \"data\": [\n        {\n            \"balls\": [\n                9,\n                16,\n                29,\n                37,\n                39,\n                4,\n                11\n            ],\n            \"jackpot\": 123,\n            \"name\": \"uroMillions\",\n            \"nextTime\": 12331,\n            \"number\": 123,\n            \"url\": \"https://test.com\"\n        },\n        {\n            \"balls\": [\n                14,\n                16,\n                19,\n                31,\n                38,\n                47,\n                20\n            ],\n            \"jackpot\": 123123,\n            \"name\": \"LOTTO\",\n            \"nextTime\": 12313,\n            \"number\": 2545,\n            \"url\": \"https://url.com\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "细节",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://hyvgk2153e.execute-api.us-east-1.amazonaws.com/dev/{name}/detail?n=2544",
+					"protocol": "https",
+					"host": [
+						"hyvgk2153e",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"{name}",
+						"detail"
+					],
+					"query": [
+						{
+							"key": "n",
+							"value": "2544",
+							"description": "具体开奖细节的number"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "细节",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://hyvgk2153e.execute-api.us-east-1.amazonaws.com/dev/LOTTO/detail?n=2544",
+							"protocol": "https",
+							"host": [
+								"hyvgk2153e",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"LOTTO",
+								"detail"
+							],
+							"query": [
+								{
+									"key": "n",
+									"value": "2544"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "140"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 15 May 2020 03:48:25 GMT"
+						},
+						{
+							"key": "x-amzn-RequestId",
+							"value": "19e04388-12e5-4bdd-ac67-011f4ce06a67"
+						},
+						{
+							"key": "x-amz-apigw-id",
+							"value": "MjeZcHScoAMFgRg="
+						},
+						{
+							"key": "X-Amzn-Trace-Id",
+							"value": "Root=1-5ebe1109-91e98054ffd97d3080a60474;Sampled=0"
+						},
+						{
+							"key": "X-Cache",
+							"value": "Miss from cloudfront"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 e74ae1ee8d87215b42aa8a1c59137a49.cloudfront.net (CloudFront)"
+						},
+						{
+							"key": "X-Amz-Cf-Pop",
+							"value": "HKG54-C1"
+						},
+						{
+							"key": "X-Amz-Cf-Id",
+							"value": "575iUAXuF37C4HKtd6CGT93c7n9yi8D1J-NvLwYuj2McDBLN47ePwQ=="
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 0,\n    \"data\": {\n        \"ball\": 8,\n        \"balls\": [\n            7,\n            18,\n            21,\n            26,\n            42,\n            50,\n            59\n        ],\n        \"jackpot\": 7101234,\n        \"machine\": \"Guinevere\",\n        \"name\": \"LOTTO\",\n        \"number\": 2544,\n        \"time\": 12313\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "历史",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://hyvgk2153e.execute-api.us-east-1.amazonaws.com/dev/{name}/histories?s=2&sk=2545",
+					"protocol": "https",
+					"host": [
+						"hyvgk2153e",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"{name}",
+						"histories"
+					],
+					"query": [
+						{
+							"key": "s",
+							"value": "2",
+							"description": "分页参数页面大小"
+						},
+						{
+							"key": "sk",
+							"value": "2545",
+							"description": "上次得到的最小细节number值"
+						},
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "历史",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://hyvgk2153e.execute-api.us-east-1.amazonaws.com/dev/LOTTO/histories?s=2&sk=2545",
+							"protocol": "https",
+							"host": [
+								"hyvgk2153e",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"LOTTO",
+								"histories"
+							],
+							"query": [
+								{
+									"key": "s",
+									"value": "2"
+								},
+								{
+									"key": "sk",
+									"value": "2545"
+								},
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "168"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 15 May 2020 03:37:58 GMT"
+						},
+						{
+							"key": "x-amzn-RequestId",
+							"value": "7ca899b4-b734-438d-8f91-c92850277375"
+						},
+						{
+							"key": "x-amz-apigw-id",
+							"value": "Mjc3ZElRIAMF58w="
+						},
+						{
+							"key": "X-Amzn-Trace-Id",
+							"value": "Root=1-5ebe0e95-f2d947005d917732a7bad02e;Sampled=0"
+						},
+						{
+							"key": "X-Cache",
+							"value": "Miss from cloudfront"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 e74ae1ee8d87215b42aa8a1c59137a49.cloudfront.net (CloudFront)"
+						},
+						{
+							"key": "X-Amz-Cf-Pop",
+							"value": "HKG54-C1"
+						},
+						{
+							"key": "X-Amz-Cf-Id",
+							"value": "22QBc3d-1AVQAhmx5gXkjZetZK-GlWr7iXTAp45xbXTGYgU0EKS4SA=="
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 0,\n    \"data\": [\n        {\n            \"balls\": [\n                7,\n                18,\n                21,\n                26,\n                42,\n                50,\n                59\n            ],\n            \"name\": \"LOTTO\",\n            \"number\": 2544,\n            \"time\": 12313\n        },\n        {\n            \"balls\": [\n                14,\n                16,\n                19,\n                31,\n                38,\n                47,\n                20\n            ],\n            \"name\": \"LOTTO\",\n            \"number\": 2543,\n            \"time\": 12313\n        }\n    ]\n}"
+				}
+			]
+		}
+	],
+	"protocolProfileBehavior": {}
+}
