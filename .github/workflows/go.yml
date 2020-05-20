@@ -25,7 +25,7 @@ jobs:
     - name: Check out wiki
       uses: actions/checkout@v2
       with:
-        repository: ${WIKI_NAME}
+        repository: ${OWNER}/${REPOSITORY}
         path: wiki
 
     - name: Check out hugo
