@@ -33,9 +33,7 @@ jobs:
       env:
         HUGO_VERSION: 0.71.0
       run: |
-        echo $HUGO_VERSION
-        sudo curl -L https://github.com/gohugoio/hugo/releases/download/v$HUGO_VERSION/hugo_$HUGO_VERSION_Linux-64bit.tar.gz 
-        tar zxvf hugo_$HUGO_VERSION_Linux-64bit.tar.gz 
+        sudo curl -L https://github.com/gohugoio/hugo/releases/download/v$HUGO_VERSION/hugo_$HUGO_VERSION_Linux-64bit.tar.gz | tar zxvf
         sudo mv hugo /usr/bin
         sudo chmod +x /usr/bin/hugo
 
