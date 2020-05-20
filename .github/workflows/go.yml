@@ -1,10 +1,14 @@
-name: Go
+name: Wiki
 
+env:
+  HUGO_VERSION: 0.71.0
+  WIKIER_VERSION: 0.1
+  EC2_HOST: doc.lottowawa.com 
+  EC2_PORT: ec2-user
+  EC2_USERNAME: ec2-user
+  EC2_KEY: ${{ secrets.EC2_DOC_KEY }}
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  gollum
 
 jobs:
 
@@ -12,26 +16,51 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-
-    - name: Set up Go 1.x
-      uses: actions/setup-go@v2
-      with:
-        go-version: ^1.13
-      id: go
-
-    - name: Check out code into the Go module directory
+    
+    - name: Check out wiki
       uses: actions/checkout@v2
+      with:
+        repository: masschaos/wikier.wiki
+        path: wiki
 
-    - name: Get dependencies
+    - name: Check out hugo
+      uses: actions/checkout@v2
+      with:
+        path: hugo
+
+    - name: install hugo
       run: |
-        go get -v -t -d ./...
-        if [ -f Gopkg.toml ]; then
-            curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-            dep ensure
-        fi
+        sudo curl -L https://github.com/gohugoio/hugo/releases/download/v$HUGO_VERSION/hugo_$HUGO_VERSION_Linux-64bit.tar.gz 
+        tar zxvf hugo_$HUGO_VERSION_Linux-64bit.tar.gz 
+        sudo mv hugo /usr/bin
+        sudo chmod +x /usr/bin/hugo
 
-    - name: Build
-      run: go build -v .
+    - name: install wikier
+      run: |
+        sudo curl -L https://github.com/masschaos/wikier/releases/download/$WIKIER_VERSION/main -o /usr/bin/wikier
+        sudo chmod +x /usr/bin/wikier
+    
+    - name: run wikier for fix and move files
+      run: wikier
 
-    - name: Test
-      run: go test -v .
+    - name: tar public files
+      run: tar zcvf public.tgz public
+      working-directory: /home/runner/work/wikier/wikier/hugo/.hugo
+
+    - name: Copy file via ssh password
+      uses: appleboy/scp-action@master
+      with:
+        host: $EC2_HOST
+        username: $EC2_USERNAME
+        key: $EC2_KEY
+        port: $EC2_PORT
+        source: "/home/runner/work/wikier/wikier/hugo/.hugo/public.tgz"
+        target: ""
+
+        #   - name: Slack Success Notification
+        # if: success()
+        # uses: rtCamp/action-slack-notify@master
+        # env:
+        #   SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        #   SLACK_MESSAGE: "监控到 master 分支的 openapi.yaml 有变动，已发布到 https://doc.lottowawa.com"
+        #   SLACK_TITLE: 文档发布成功
