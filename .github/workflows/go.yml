@@ -33,6 +33,8 @@ jobs:
       with:
         path: hugo
 
+    - run: ls -lR ${GITHUB_WORKSPACE}
+
     - name: install hugo
       working-directory: /tmp
       run: |
