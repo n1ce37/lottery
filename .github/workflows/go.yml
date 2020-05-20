@@ -48,6 +48,7 @@ jobs:
     - name: install wikier
       working-directory: ${GITHUB_WORKSPACE}
       run: |
+        sudo mkdir bin
         sudo curl -L https://github.com/masschaos/wikier/releases/download/${WIKIER_VERSION}/main -o bin/wikier
         sudo chmod +x wikier
     
