@@ -45,6 +45,7 @@ jobs:
         sudo curl -L https://github.com/masschaos/wikier/releases/download/${WIKIER_VERSION}/main -o /usr/bin/wikier
         # sudo curl -L https://github.com/masschaos/wikier/releases/download/0.1/main -o /usr/bin/wikier
         sudo chmod +x /usr/bin/wikier
+        ls -lR /usr/bin
     
     - name: run wikier for fix and move files
       run: |
