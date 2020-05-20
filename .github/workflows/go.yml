@@ -1,12 +1,12 @@
 name: Wiki
 
-# env:
-#   HUGO_VERSION: 0.71.0
-#   WIKIER_VERSION: 0.1
-#   EC2_HOST: doc.lottowawa.com 
-#   EC2_PORT: ec2-user
-#   EC2_USERNAME: ec2-user
-#   EC2_KEY: ${{ secrets.EC2_DOC_KEY }}
+env:
+  HUGO_VERSION: 0.71.0
+  WIKIER_VERSION: 0.1
+  EC2_HOST: doc.lottowawa.com 
+  EC2_PORT: ec2-user
+  EC2_USERNAME: ec2-user
+  EC2_KEY: ${{ secrets.EC2_DOC_KEY }}
 on:
   gollum
 
@@ -33,8 +33,7 @@ jobs:
       env:
         HUGO_VERSION: 0.71.0
       run: |
-        # sudo curl -L https://github.com/gohugoio/hugo/releases/download/v$HUGO_VERSION/hugo_$HUGO_VERSION_Linux-64bit.tar.gz
-        sudo curl -L https://github.com/gohugoio/hugo/releases/download/v0.71.0/hugo_0.71.0_Linux-64bit.tar.gz -o hugo.tgz
+        sudo curl -L https://github.com/gohugoio/hugo/releases/download/v${ HUGO_VERSION }/hugo_${ HUGO_VERSION }_Linux-64bit.tar.gz
         tar -zxvf hugo.tgz
         sudo mv hugo /usr/bin
         sudo chmod +x /usr/bin/hugo
@@ -42,28 +41,25 @@ jobs:
 
     - name: install wikier
       run: |
-        sudo curl -L https://github.com/masschaos/wikier/releases/download/${WIKIER_VERSION}/main -o /usr/bin/wikier
-        # sudo curl -L https://github.com/masschaos/wikier/releases/download/0.1/main -o /usr/bin/wikier
+        sudo curl -L https://github.com/masschaos/wikier/releases/download/${ WIKIER_VERSION }/main -o /usr/bin/wikier
         sudo chmod +x /usr/bin/wikier
-        ls -lR /usr/bin
     
     - name: run wikier for fix and move files
       run: |
-        # ls -lR /home/runner/work
-        wikier
+        wikier ${GITHUB_WORKSPACE}
 
     - name: tar public files
       run: tar zcvf public.tgz public
-      working-directory: /home/runner/work/wiki/wikier/hugo/.hugo
+      working-directory: ${ GITHUB_WORKSPACE }/hugo/.hugo
 
     - name: Copy file via ssh password
       uses: appleboy/scp-action@master
       with:
-        host: $EC2_HOST
-        username: $EC2_USERNAME
-        key: $EC2_KEY
-        port: $EC2_PORT
-        source: "/home/runner/work/wikier/wikier/hugo/.hugo/public.tgz"
+        host: ${ EC2_HOST }
+        username: ${ EC2_USERNAME }
+        key: ${ EC2_KEY }
+        port: ${ EC2_PORT }
+        source: "${ GITHUB_WORKSPACE }/hugo/.hugo/public.tgz"
         target: ""
 
         #   - name: Slack Success Notification
