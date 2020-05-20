@@ -22,7 +22,6 @@ jobs:
       with:
         repository: ${GITHUB_REPOSITORY}.wiki
         path: wiki
-      run: ls -lR ${GITHUB_WORKSPACE}/wiki
 
     - name: Check out hugo
       uses: actions/checkout@v2
@@ -41,6 +40,7 @@ jobs:
 
     - name: install wikier
       run: |
+        ls -lR ${GITHUB_WORKSPACE}
         sudo curl -L https://github.com/masschaos/wikier/releases/download/${WIKIER_VERSION}/main -o /usr/bin/wikier
         sudo chmod +x /usr/bin/wikier
     
