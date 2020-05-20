@@ -48,7 +48,7 @@ jobs:
     
     - name: run wikier for fix and move files
       run: |
-        ls -lR /home/runner/work/wiki
+        ls -lR /home/runner/work
         wikier
 
     - name: tar public files
