@@ -7,6 +7,7 @@ env:
   EC2_PORT: ec2-user
   EC2_USERNAME: ec2-user
   EC2_KEY: ${{ secrets.EC2_DOC_KEY }}
+  WIKI_NAME: n1ce37/lottery.wiki
 on:
   gollum
 
@@ -23,7 +24,7 @@ jobs:
     - name: Check out wiki
       uses: actions/checkout@v2
       with:
-        repository: ${GITHUB_REPOSITORY}.wiki
+        repository: ${WIKI_NAME}
         path: wiki
 
     - name: Check out hugo
