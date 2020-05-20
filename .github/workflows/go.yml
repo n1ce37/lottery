@@ -50,8 +50,8 @@ jobs:
         sudo chmod +x /usr/bin/wikier
     
     - name: run wikier for fix and move files
-      run: |
-        wikier ${GITHUB_WORKSPACE}
+      working-directory: ${GITHUB_WORKSPACE}
+      run: sudo wikier
 
     - name: tar public files
       run: tar zcvf public.tgz public
