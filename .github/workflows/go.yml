@@ -33,8 +33,8 @@ jobs:
       env:
         HUGO_VERSION: 0.71.0
       run: |
-        sudo curl -L https://github.com/gohugoio/hugo/releases/download/v$HUGO_VERSION/hugo_$HUGO_VERSION_Linux-64bit.tar.gz
-        # sudo curl -L https://github.com/gohugoio/hugo/releases/download/v0.71.0/hugo_0.71.0_Linux-64bit.tar.gz -o hugo.tgz
+        # sudo curl -L https://github.com/gohugoio/hugo/releases/download/v$HUGO_VERSION/hugo_$HUGO_VERSION_Linux-64bit.tar.gz
+        sudo curl -L https://github.com/gohugoio/hugo/releases/download/v0.71.0/hugo_0.71.0_Linux-64bit.tar.gz -o hugo.tgz
         tar -zxvf hugo.tgz
         sudo mv hugo /usr/bin
         sudo chmod +x /usr/bin/hugo
@@ -42,15 +42,18 @@ jobs:
 
     - name: install wikier
       run: |
-        sudo curl -L https://github.com/masschaos/wikier/releases/download/$WIKIER_VERSION/main -o /usr/bin/wikier
+        # sudo curl -L https://github.com/masschaos/wikier/releases/download/$WIKIER_VERSION/main -o /usr/bin/wikier
+        sudo curl -L https://github.com/masschaos/wikier/releases/download/0.1/main -o /usr/bin/wikier
         sudo chmod +x /usr/bin/wikier
     
     - name: run wikier for fix and move files
-      run: wikier
+      run: |
+        ls -lR /home/runner/work/wiki
+        wikier
 
     - name: tar public files
       run: tar zcvf public.tgz public
-      working-directory: /home/runner/work/wikier/wikier/hugo/.hugo
+      working-directory: /home/runner/work/wiki/wikier/hugo/.hugo
 
     - name: Copy file via ssh password
       uses: appleboy/scp-action@master
