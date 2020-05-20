@@ -20,8 +20,9 @@ jobs:
     - name: Check out wiki
       uses: actions/checkout@v2
       with:
-        repository: masschaos/wikier.wiki
+        repository: ${GITHUB_REPOSITORY}.wiki
         path: wiki
+      run: ls -lR ${GITHUB_WORKSPACE}/wiki
 
     - name: Check out hugo
       uses: actions/checkout@v2
@@ -37,7 +38,6 @@ jobs:
         tar -zxvf hugo.tgz
         sudo mv hugo /usr/bin
         sudo chmod +x /usr/bin/hugo
-        ls -l /usr/bin
 
     - name: install wikier
       run: |
