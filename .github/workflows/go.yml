@@ -25,7 +25,7 @@ jobs:
     - name: Check out wiki
       uses: actions/checkout@v2
       with:
-        repository: n1ce37/lottery.git
+        repository: n1ce37/lottery.wiki.git
         path: wiki
 
     - name: Check out hugo
