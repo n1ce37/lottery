@@ -53,7 +53,7 @@ jobs:
     
     - name: run wikier for fix and move files
       working-directory: ${GITHUB_WORKSPACE}
-      run: ./wikier
+      run: ./bin/wikier
 
     - name: tar public files
       run: tar zcvf public.tgz public
