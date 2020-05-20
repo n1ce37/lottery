@@ -17,6 +17,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
+    - name: debug
+      run: echo $GITHUB_REPOSITORY
+    
     - name: Check out wiki
       uses: actions/checkout@v2
       with:
